@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+    body {
+        padding-top: 50px
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="page-header">Hello World</h1>
+    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">Brand</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">link <span class=""></span></a></li>
+                    <li><a href="#">link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">nav-item</a></li>
+                            <li><a href="#">nav-item</a></li>
+                            <li><a href="#">nav-item</a></li>
+                            <li><a href="#">nav-item</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form action="" class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-defalut">submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">dropdowm-item</a></li>
+                            <li><a href="#">dropdowm-item</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">dropdowm-item</a></li>
+                            <li><a href="#">dropdowm-item</a></li>
+                            <li><a href="#">dropdowm-item</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Library</a></li>
+        <li class="active">Data</li>
+    </ol>
+  <!--   <div class="btn-toolbar">
+        <div class="btn-group " role="group">
+            <button type="button" class="btn btn-info">left</button>
+            <button type="button" class="btn btn-danger">middle</button>
+            <button type="button" class="btn btn-success">right</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-info">left</button>
+            <button type="button" class="btn btn-default">middle</button>
+            <button type="button" class="btn btn-success">right</button>
+            <button type="button" class="btn btn-warning">right</button>
+            <button type="button" class="btn btn-primary">right</button>
+            <button type="button" class="btn btn-danger">right</button>
+        </div>
+        <div class="btn-group dropup">
+            <button class="btn btn-primary">DropUp</button>
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">111</a></li>
+                <li><a href="#">222</a></li>
+                <li><a href="#">333</a></li>
+            </ul>
+        </div>
+    </div> -->
+    <ul class="pagination pagination-lg">
+        <li class="disabled">
+            <a href="#" class="Previous">
+                <span>&laquo;</span>
+            </a>
+        </li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" class="Next">
+                <span>&raquo;</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="pager">
+        <li><a href="#">Previous<span class="&larr;"></span></a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
+    <!-- <div class="popover fade top in" style="top: 23px; left: 132px; display: block;">
+        <div class="arrow"></div>
+         <div class="popover-content">
+       	顶部的 Popover 中的一些内容
+       	</div>
+    </div> -->
+    <div class="tooltip bottom" style="opacity:1">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-inner">
+            提示信息
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
