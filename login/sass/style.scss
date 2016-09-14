@@ -1,0 +1,559 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+// @import "compass/reset";
+@import "normalize";
+@import "compass";
+@import "compass/layout";
+$browser-minimum-versions:("ie":"7");
+html {
+    @include box-sizing(border-box)
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit
+}
+
+a {
+    @include unstyled-link
+}
+
+ul,
+ol {
+    @include no-bullets
+}
+p{
+    margin: 5px 0
+}
+//function
+$base-font-size: 16px;
+@function pxToEm($px) {
+    @return $px / $base-font-size * 1em;
+}
+
+// mixin
+@mixin border($color) {
+    border: 1px solid $color;
+}
+
+@mixin border-bottom($color) {
+    border-bottom: 1px solid $color;
+}
+
+@mixin bgposition($top, $left) {
+    background-position: $top $left;
+}
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin square($size) {
+    @include size($size, $size);
+}
+
+//variables
+$container-width: 1200px;
+$lgbox-width: 320px;
+$form-width: 260px;
+$header-height: 60px;
+$banner-height: 434px;
+$input-width: 180px;
+$main-color: #00c7ff;
+
+//placeholder
+%container {
+    width: $container-width;
+    margin: 0 auto;
+}
+
+%form-item-radius {
+    border-radius: 3px
+}
+
+%form-input {
+    padding: 6px 0;
+    border: 0 none;
+    outline: 0 none;
+}
+
+%form-item-margin {
+    margin: 15px 0
+}
+
+%form-item-shadow {
+    @include box-shadow( 0px 1px 3px darken(#fff, 50%))
+}
+
+%no-padding {
+    padding: 0
+}
+
+%margin-auto {
+    margin: 0 auto
+}
+
+%text-center {
+    text-align: center
+}
+
+//main scss
+.header {
+    @at-root .header-inner {
+        @extend %container;
+        @include clearfix;
+        @at-root {
+            .site-logo {
+                @include float(left);
+                margin: 7px 0;
+            }
+            .header-nav {
+                @include float(right);
+                @include horizontal-list(10px, left);
+                li {
+                    line-height: $header-height;
+                    &:hover {
+                        background: darken(#fff, 5%)
+                    }
+                    a {
+                        padding: 0 10px;
+                        font-size: pxToEm(18px);
+                    }
+                }
+                li.reg {
+                    background: $main-color;
+                    &:hover {
+                        background: darken($main-color, 2%)
+                    }
+                    a {
+                        color: #fff
+                    }
+                }
+            }
+        }
+    }
+}
+
+.login {
+    position: relative;
+    @at-root {
+        .login-banner-list {
+            width: 100%;
+            height: $banner-height;
+            @include inline-block-list;
+            li {
+                img {
+                    margin-left: -220px;
+                    @media screen and (min-width: 1900px) {
+                        margin-left: 0px;
+                    }
+                }
+            }
+        }
+        .login-box {
+            position: absolute;
+            top: ($banner-height - $lgbox-width) / 2;
+            left: 50%;
+            width: $lgbox-width;
+            margin-left: $lgbox-width / 2;
+            padding-bottom: 20px;
+            border-radius: 12px;
+            background: rgba(#fff, 0.5);
+            background: darken(#fff, 1%)\9;
+            @at-root {
+                .login-header {
+                    padding-bottom: 12px;
+                    @include border-bottom(rgba(black, .3));
+                    border-bottom: 1px solid lighten(black, 30%)\9;
+                    h4 {
+                        width: $form-width;
+                        margin: 12px auto 0;
+                        @extend %text-center;
+                        line-height: 35px;
+                        letter-spacing: 2px;
+                        font-weight: normal;
+                        font-size: pxToEm(20px);
+                        @extend %form-item-radius;
+                        background: rgba(#fff, .8);
+                        background: darken(#fff, 10%)\9;
+                        &:hover {
+                            background: rgba(#fff, 1);
+                            background: darken(#fff, 5%)\9;
+                        }
+                    }
+                }
+                .login-form {
+                    width: $form-width;
+                    margin: 0 auto;
+                    @at-root {
+                        .form-item {
+                            @extend %form-item-margin;
+                            @extend %form-item-shadow;
+                            @extend %form-item-radius;
+                            @include border(#fff);
+                            border: 1px solid darken(#fff, 10%)\9;
+                            padding-left: 45px;
+                            background: #fff;
+                            input {
+                                @extend %form-input;
+                                width: $input-width;
+                            }
+                            i {
+                                position: absolute;
+                                @include square(24px);
+                                margin-left: -35px;
+                                background: url(../images/lg_icon.png);
+                            }
+                        }
+                        .form-account i {
+                            @include bgposition(172px, -26px)
+                        }
+                        .form-passwd i {
+                            @include bgposition(168px, -52px)
+                        }
+                        .form-vercode {
+                            @include clearfix;
+                            @extend %form-item-margin;
+                            @extend %no-padding;
+                            input {
+                                width: $form-width / 2;
+                                @include float(left);
+                                @extend %form-input;
+                                @extend %form-item-radius;
+                                text-indent: 1em;
+                            }
+                            span {
+                                @include float(right);
+                                img{
+                                    width: 105px;
+                                    height: 30px;
+                                    @extend %form-item-radius;
+                                }
+                            }
+                        }
+                        .error-tip {
+                            display: none;
+                            @extend %form-item-margin;
+                            @extend %form-item-radius;
+                            @include border(#faccc6);
+                            padding: 6px 0 6px 30px;
+                            background: #ffebeb;
+                            color: #e4393c;
+                            i {
+                                position: absolute;
+                                @include square(16px);
+                                margin-left: -20px;
+                                background: url(../images/icon-btn.png);
+                                @include bgposition(-16px, -83px);
+                            }
+                        }
+                        .form-submit {
+                            @extend %form-item-margin;
+                            @extend %no-padding;
+                            @extend %form-item-shadow;
+                            input {
+                                @extend %form-input;
+                                @extend %form-item-radius;
+                                width: 100%;
+                                text-indent: 30px;
+                                *text-indent: 0px;
+                                letter-spacing: 30px;
+                                color: #fff;
+                                font-size: pxToEm(20px);
+                                background: #00bbc5;
+                                &:hover {
+                                    background: #02c3cc
+                                }
+                            }
+                        }
+                        .warm-link {
+                            @include clearfix;
+                            a {
+                                color: darken(#fff, 60%);
+                                &:hover {
+                                    color: darken(#fff, 100%)
+                                }
+                            }
+                            .regist {
+                                @include float(left)
+                            }
+                            .find-pwd {
+                                @include float(right)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .border-error {
+            @include border(#e4393c)
+        }
+        .border-hover {
+            @include border(#3aa2e4)
+        }
+    }
+}
+
+.news {
+    @at-root {
+        .online-news {
+            @extend %container;
+            padding: 20px 0;
+            @at-root .online-news-wrap {
+                @include horizontal-list(false, left);
+                @extend %container;
+                .online-news-scroll {
+                    width: 33%;
+                    *width: 31%;
+                    padding-left: 20px;
+                    i {
+                        position: absolute;
+                        @include square(15px);
+                        margin: 13px 20px;
+                        *margin-left: -20px;
+                        background: url(../images/radio.png);
+                    }
+                    @at-root .online-news-list {
+                        width: 100%;
+                        height: 44px;
+                        overflow: hidden;
+                        li {
+                            line-height: 44px;
+                            font-size: pxToEm(14px);
+                            color: #333;
+                        }
+                    }
+                }
+            }
+        }
+        .media-report {
+            @at-root {
+                .report-header {
+                    height: 70px;
+                    background: url(../images/media-report.jpg)no-repeat center;
+                }
+                .report-content {
+                    position: relative;
+                    margin: 50px 0;
+                    .picwrap {
+                        width: 1250px;
+                        @extend %margin-auto;
+                    }
+                    @at-root .pic-list {
+                        @include clearfix;
+                        height: 250px;
+                        li {
+                            @include square(190px);
+                            @extend %text-center;
+                            @include float(left);
+                            margin: 30px;
+                            .pic-item {
+                                @include square(190px);
+                                @include border(#ccc);
+                                overflow: hidden;
+                                &:hover {
+                                    margin: -20px;
+                                    @include square(230px);
+                                    border: 2px solid $main-color;
+                                }
+                                &:hover p {
+                                    margin: 10px 0
+                                }
+                                img {
+                                    @include square(150px);
+                                    margin-top: 10px;
+                                }
+                                p {
+                                    margin: 100px 0
+                                }
+                                a {
+                                    padding: 5px 10px;
+                                    border-radius: 12px;
+                                    color: #999;
+                                    background: darken(#fff, 5%);
+                                    &:hover {
+                                        color: #fff;
+                                        background: $main-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    @at-root .arrow {
+                        a {
+                            position: absolute;
+                            @include size(22px, 36px);
+                            top: 100px;
+                        }
+                        .next {
+                            right: 20px;
+                            background: url(../images/arrow-right.png)
+                        }
+                        .prev {
+                            left: 20px;
+                            background: url(../images/arrow-left.png)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.intro {
+    background: #404040;
+    @at-root {
+        .intro-header {
+            height: 330px;
+            background: url(../images/intro-bg.jpg)no-repeat center;
+        }
+        .intro-content {
+            width: 1166px;
+            margin: -30px auto;
+            background: url(../images/nav.png)no-repeat;
+            @at-root .intro-list {
+                @include horizontal-list(false,left);
+                position: relative;
+                top: -50px;
+                width: 900px;
+                margin: 0 auto;
+                padding: 20px 0;
+                li {
+                    width: 20%;
+                    @extend %text-center;
+                    img {
+                        width: 60px
+                    }
+                    p {
+                        margin: 0;
+                        color: #fff;
+                        font-size: pxToEm(18px)
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: -400px;
+    width: 100%;
+    height: 400px;
+    *height: 370px;
+    background: #fff;
+    border-top: 10px solid #00bbc5;
+    @at-root {
+        .switch {
+            a {
+                position: absolute;
+                left: 20%;
+                @include size(153px, 41px);
+                margin: -45px 0;
+                background: url(../images/contact-up.png);
+                transition: all .1s;
+            }
+            a.on {
+                left: 50%;
+                margin: 0 -76px;
+                background: url(../images/contact-down.png)
+            }
+        }
+        .contact {
+            background: #575757;
+            .contact-inner {
+                @extend %container;
+                @include clearfix;
+                > div {
+                    @include float(left);
+                    margin: 50px 50px 0;
+                }
+                .contact-left {
+                    dl {
+                        @include inline-block;
+                        vertical-align: top;
+                        margin: 0 10px;
+                        dt {
+                            font-size: pxToEm(18px);
+                            color: #fff;
+                        }
+                        dd {
+                            margin: 10px 0;
+                            font-size: pxToEm(12px);
+                            color: #a5a5a5;
+                            a {
+                                &:hover {
+                                    color: #fdd000
+                                }
+                            }
+                        }
+                    }
+                }
+                .contact-center {
+                    width: 200px;
+                    p {
+                        margin: 8px 0;
+                        color: #fff;
+                    }
+                    .warm-tip {
+                        color: #fdd000;
+                        font-size: pxToEm(14px);
+                    }
+                    .service-line {
+                        color: #bababa;
+                        font-size: pxToEm(14px);
+                    }
+                    .number {
+                        font-size: pxToEm(26px);
+                        font-weight: bold
+                    }
+                    .follow {}
+                    .follow-us {
+                        color: #fdd000;
+                        font-size: pxToEm(14px);
+                    }
+                }
+                .contact-right {
+                    float: right;
+                    .qrcode {
+                        @include horizontal-list(10px, left);
+                        > li {
+                            width: 100px;
+                            img {
+                                width: 85px;
+                            }
+                            p {
+                                color: #333;
+                                font-size: pxToEm(14px);
+                            }
+                        }
+                    }
+                    >p {
+                        color: #dde4e7;
+                        font-size: pxToEm(14px);
+                    }
+                }
+            }
+        }
+        .about {
+            @extend %container;
+            padding: 20px 0;
+            .honour-list {
+                @include inline-block-list();
+                width: 820px;
+                margin: auto;
+            }
+            .copyright {
+                p {
+                    @extend %text-center;
+                    // color: #333;
+                }
+            }
+        }
+    }
+}
