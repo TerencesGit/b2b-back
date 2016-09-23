@@ -103,4 +103,3 @@ $(function() {
 //         return false;
 //     }
 // })();
-cosole.log('asd')

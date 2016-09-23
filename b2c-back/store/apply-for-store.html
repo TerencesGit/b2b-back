@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>申请开店</title>
+    <link rel="stylesheet" href="../static/libs/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+</head>
+
+<body>
+    <div class="page-title">
+        <h2>申请开店</h2>
+    </div>
+    <div class="container">
+        <form method="post" action="apply-success-tip.html" enctype="multipart/form-data" class="form-horizontal apply-form">
+            <div class="form-group">
+                <label for="" class="control-label col-md-2">公司全称</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="B端调取全称" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-md-2">公司简称</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="B端调取简称" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-md-2">公司LOGO</label>
+                <div class="col-md-8">
+                    <input type="file" id="logoUp">
+                    <div id="logoPreview" class="pic-preview" onclick="$('#logoUp').click()">
+                        <img id="logoImg">
+                    </div>
+                    <a class="btn-upload" onclick="$('#logoUp').click()">上传公司LOGO</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-md-2">公司地址</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="公司地址">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-md-2">联系电话</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="联系电话">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-md-2">营业执照注册号</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="营业执照注册号">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-md-2">营业执照</label>
+                <div class="col-md-8">
+                    <input type="file" id="licenseUp">
+                    <div id="licensePreview" class="pic-preview" onclick="$('#licenseUp').click()">
+                        <img id="licenseImg">
+                    </div>
+                    <a class="btn-upload" onclick="$('#licenseUp').click()">上传营业执照</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-md-2">经营许可证</label>
+                <div class="col-md-8">
+                    <input type="file" id="permitUp">
+                    <div id="permitPreview" class="pic-preview" onclick="$('#permitUp').click()">
+                        <img id="permitImg">
+                    </div>
+                    <a class="btn-upload" onclick="$('#permitUp').click()">上传经营许可证</a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-md-2">主营产品</label>
+                <div class="col-md-8 main-products">
+                    <label class="col-md-2">
+                        <input type="checkbox">国内长线
+                    </label>
+                    <label class="col-md-2">
+                        <input type="checkbox">周边游
+                    </label>
+                    <label class="col-md-2">
+                        <input type="checkbox">出境长线
+                    </label>
+                    <label class="col-md-2">
+                        <input type="checkbox">出境短线
+                    </label>
+                    <label class="col-md-2">
+                        <input type="checkbox">港澳台
+                    </label>
+                    <label class="col-md-2">
+                        <input type="checkbox">酒店
+                    </label>
+                    <label class="col-md-2">
+                        <input type="checkbox">保险
+                    </label>
+                    <label class="col-md-2">
+                        <input type="checkbox">租车
+                    </label>
+                    <label class="col-md-2">
+                        <input type="checkbox">机票
+                    </label>
+                    <label class="col-md-2">
+                        <input type="checkbox">门票
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">公司简介</label>
+                <div class="col-md-8">
+                    <textarea rows="6" class="form-control" placeholder="公司简介"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">公司荣誉</label>
+                <div class="col-md-8">
+                    <textarea rows="6" class="form-control" placeholder="公司荣誉"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="col-md-offset-5 btn btn-primary btn-lg btn-submit">提交</button>
+        </form>
+    </div>
+    <script src="../static/libs/jquery/jquery.js"></script>
+    <script src="../static/js/uploadPreview.min.js"></script>
+    <script>
+    $(function() {
+        new uploadPreview({
+            UpBtn: 'logoUp',
+            DivShow: 'logoPreview',
+            ImgShow: 'logoImg'
+        })
+        new uploadPreview({
+            UpBtn: 'licenseUp',
+            DivShow: 'licensePreview',
+            ImgShow: 'licenseImg'
+        })
+        new uploadPreview({
+            UpBtn: 'permitUp',
+            DivShow: 'permitPreview',
+            ImgShow: 'permitImg'
+        })
+        $('.btn-submit').click(function() {
+            // return false
+        })
+    })
+    </script>
+</body>
+
+</html>
